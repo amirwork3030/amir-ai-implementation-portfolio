@@ -1,0 +1,10 @@
+Representative run (deterministic fallback mode):
+
+Invoice 1 -> confidence=1.00 | AUTO_APPROVED | no issues
+Invoice 2 -> confidence=0.75 | HUMAN_REVIEW | possible_duplicate_of:1
+Invoice 3 -> confidence=1.00 | AUTO_APPROVED | no issues
+Invoice 4 -> confidence=0.82 | HUMAN_REVIEW | missing:invoice_number
+Invoice 5 -> confidence=0.75 | HUMAN_REVIEW | amount_must_be_positive
+Invoice 6 -> confidence=1.00 | AUTO_APPROVED | no issues
+
+The application writes each workflow decision to workflow_audit.db when run locally.
