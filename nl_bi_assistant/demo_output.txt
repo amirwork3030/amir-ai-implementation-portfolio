@@ -1,0 +1,20 @@
+QUESTION: Show monthly revenue trend
+STATUS: OK
+INTENT: monthly_revenue
+ROWS: 2026-06=223000.0, 2026-07=234000.0, 2026-08=250000.0
+
+QUESTION: Show cost by department
+STATUS: OK
+INTENT: cost_by_department
+ROWS: Finance=254000.0, Operations=229000.0
+
+QUESTION: What is margin by department?
+STATUS: OK
+INTENT: margin_by_department
+ROWS: Finance=143000.0, Operations=81000.0
+
+QUESTION: Tell me everything about customers
+STATUS: CLARIFICATION_REQUIRED
+MESSAGE: Supported examples: monthly revenue trend, cost by department, monthly incident trend, margin by department.
+
+The application writes the question, recognised intent and status to business_metrics.db when run locally.
