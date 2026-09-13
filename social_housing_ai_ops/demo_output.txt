@@ -1,0 +1,12 @@
+Representative run (deterministic fallback mode):
+
+MSG-001 -> URGENT_MAINTENANCE | HIGH | Property Operations | human_review=true | deadline=today
+MSG-002 -> TENANCY_DOCUMENTS | MEDIUM | Housing Officer | human_review=true | deadline=friday
+MSG-003 -> CONTRACTOR_COORDINATION | LOW | Property Operations | human_review=false | deadline=tomorrow
+MSG-004 -> COMPLIANCE | MEDIUM | Compliance Team | human_review=true | deadline=next month
+MSG-005 -> MOVE_IN | MEDIUM | Tenancy Coordinator | human_review=true | deadline=monday
+MSG-006 -> TENANCY_DOCUMENTS | MEDIUM | Housing Officer | human_review=true
+MSG-007 -> ROUTINE_MAINTENANCE | LOW | Maintenance Queue | human_review=false
+MSG-008 -> CONTRACTOR_COORDINATION | LOW | Property Operations | human_review=false
+
+The application also writes every decision to housing_ops_audit.db when run locally.
