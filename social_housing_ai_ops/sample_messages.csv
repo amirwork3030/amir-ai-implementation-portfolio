@@ -1,0 +1,9 @@
+message_id,source,property_ref,sender_role,message
+MSG-001,tenant_chat,P-101,Tenant,"Kitchen sink is leaking and water is spreading under the cabinet. Please arrange someone today."
+MSG-002,email,P-205,Council,"Please confirm whether the tenancy documents for the new placement are complete before Friday."
+MSG-003,contractor_chat,P-101,Contractor,"I can attend tomorrow between 10 and 12. Please confirm access with the tenant."
+MSG-004,landlord_email,P-330,Landlord,"Gas safety certificate expires next month. Please arrange renewal and send confirmation."
+MSG-005,tenant_chat,P-410,Tenant,"I am moving in on Monday. I still need the inventory and key collection details."
+MSG-006,operations_chat,P-205,Housing Officer,"Referral received but proof of ID is missing. Hold the placement until documents are complete."
+MSG-007,tenant_chat,P-512,Tenant,"The hallway light is not working. No immediate danger but please log a repair."
+MSG-008,contractor_chat,P-330,Contractor,"Job completed. Certificate attached and invoice will follow separately."
