@@ -1,0 +1,7 @@
+invoice_id,supplier,invoice_number,invoice_date,gross_amount,currency
+1,Northstar Supplies,NS-1001,2026-08-01,1250.00,GBP
+2,Northstar Supplies,NS-1001,2026-08-01,1250.00,GBP
+3,City Office Ltd,CO-778,2026-08-03,482.50,GBP
+4,Unknown Vendor,,2026-08-05,199.99,GBP
+5,Tech Parts UK,TP-41,2026-08-05,-50.00,GBP
+6,DataStore Ltd,DS-900,2026-08-06,780.00,GBP
