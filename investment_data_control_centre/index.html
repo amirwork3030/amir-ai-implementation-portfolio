@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Investment Data Control Centre</title>
+<style>
+  :root{
+    --bg:#f5f7fb; --panel:#ffffff; --nav:#132238; --text:#14213d; --muted:#6b7280;
+    --blue:#2f6fed; --green:#169b62; --red:#d64545; --amber:#d79a00; --line:#e5e7eb;
+  }
+  *{box-sizing:border-box} body{margin:0;font-family:Inter,Arial,sans-serif;background:var(--bg);color:var(--text)}
+  .app{display:grid;grid-template-columns:220px 1fr;min-height:100vh}
+  aside{background:var(--nav);color:#fff;padding:22px 16px}
+  .brand{font-size:22px;font-weight:800;margin-bottom:28px}.brand span{color:#63a4ff}
+  nav a{display:block;color:#d8e2ef;text-decoration:none;padding:11px 12px;border-radius:8px;margin:5px 0}
+  nav a.active, nav a:hover{background:#23364e;color:#fff}
+  main{padding:26px}
+  .top{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;gap:18px;flex-wrap:wrap}
+  h1{margin:0;font-size:27px}.sub{color:var(--muted);margin-top:5px}
+  .badge{font-size:12px;padding:7px 10px;border:1px solid var(--line);background:#fff;border-radius:999px}
+  .actions{display:flex;gap:10px}
+  button{border:0;border-radius:8px;padding:11px 16px;font-weight:700;cursor:pointer}
+  .primary{background:var(--blue);color:#fff}.run{background:var(--green);color:#fff}
+  .cards{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:17px;box-shadow:0 2px 6px rgba(0,0,0,.03)}
+  .label{font-size:13px;color:var(--muted)} .metric{font-size:28px;font-weight:800;margin-top:8px}
+  .grid{display:grid;grid-template-columns:1.4fr .9fr;gap:14px;margin-top:14px}
+  table{width:100%;border-collapse:collapse;font-size:14px}
+  th,td{text-align:left;padding:12px;border-bottom:1px solid var(--line)}
+  th{font-size:12px;color:var(--muted)}
+  .pill{padding:5px 8px;border-radius:999px;font-size:12px;font-weight:700;display:inline-block}
+  .high{background:#ffe0e0;color:#9f1d1d}.medium{background:#fff0c7;color:#805d00}.low{background:#dff5e9;color:#0c6b43}
+  .ai{background:linear-gradient(180deg,#f7faff,#eef4ff);border:1px solid #dce7ff}
+  .ai h3,.section-title{margin:0 0 10px}.ai p{line-height:1.5;color:#2e3d55}
+  .ai ul{padding-left:18px;color:#2e3d55}
+  .ai-actions{display:flex;gap:8px;margin-top:15px;flex-wrap:wrap}
+  .approve{background:#168f5a;color:#fff}.escalate{background:#f1b535;color:#3c2a00}.jira{background:#2f6fed;color:#fff}
+  .flow{margin-top:14px;background:#fff;border:1px solid var(--line);border-radius:12px;padding:18px}
+  .flowline{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+  .node{padding:12px 14px;border-radius:9px;background:#eef3fb;border:1px solid #d9e2ef;font-size:13px;font-weight:700}
+  .arrow{color:#7c8aa0;font-weight:800}
+  .footer{margin-top:18px;color:var(--muted);font-size:12px}
+  @media(max-width:900px){.app{grid-template-columns:1fr}aside{display:none}.cards{grid-template-columns:repeat(2,1fr)}.grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="app">
+  <aside>
+    <div class="brand"><span>AI</span> Control Centre</div>
+    <nav>
+      <a class="active" href="#">Dashboard</a>
+      <a href="#">Data Analysis</a>
+      <a href="#">Data Lineage</a>
+      <a href="#">Requirements</a>
+      <a href="#">Test Results</a>
+      <a href="#">Export / Jira</a>
+    </nav>
+  </aside>
+
+  <main>
+    <div class="top">
+      <div>
+        <h1>Investment Data Control Centre</h1>
+        <div class="sub">Synthetic investment-data quality, AI analysis and human review demo</div>
+      </div>
+      <div class="actions">
+        <span class="badge">Synthetic Data Demo</span>
+        <button class="primary" onclick="alert('Sample CSV selected')">Upload Data</button>
+        <button class="run" onclick="runAnalysis()">Run Analysis</button>
+      </div>
+    </div>
+
+    <div class="cards">
+      <div class="card"><div class="label">Total Records</div><div class="metric">1,250</div></div>
+      <div class="card"><div class="label">Valid Records</div><div class="metric">1,217</div></div>
+      <div class="card"><div class="label">Exceptions</div><div class="metric" id="exceptions">33</div></div>
+      <div class="card"><div class="label">Data Quality Score</div><div class="metric">97.4%</div></div>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <h3 class="section-title">Exception Details</h3>
+        <table>
+          <thead><tr><th>Issue</th><th>Records</th><th>Severity</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td>Missing instrument classification</td><td>12</td><td><span class="pill high">High</span></td><td>Review</td></tr>
+            <tr><td>Duplicate trades</td><td>9</td><td><span class="pill medium">Medium</span></td><td>Investigate</td></tr>
+            <tr><td>Currency mapping</td><td>7</td><td><span class="pill medium">Medium</span></td><td>Review</td></tr>
+            <tr><td>Stale prices</td><td>5</td><td><span class="pill high">High</span></td><td>Escalate</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="card ai">
+        <h3>AI Analyst Summary</h3>
+        <p id="summary">33 exceptions detected. Highest-risk items relate to stale pricing and missing instrument classifications.</p>
+        <ul>
+          <li>Validate pricing-source freshness.</li>
+          <li>Enrich missing classifications.</li>
+          <li>Review duplicate trade logic.</li>
+          <li>Re-run validation before business sign-off.</li>
+        </ul>
+        <div class="ai-actions">
+          <button class="approve" onclick="statusMsg('Approved for business sign-off')">Approve</button>
+          <button class="escalate" onclick="statusMsg('Escalated to Data Operations')">Escalate</button>
+          <button class="jira" onclick="statusMsg('Jira ticket drafted from exception summary')">Create Jira Ticket</button>
+        </div>
+        <p id="status" style="font-weight:700;margin-top:12px"></p>
+      </div>
+    </div>
+
+    <div class="flow">
+      <h3 class="section-title">Investment Data Flow</h3>
+      <div class="flowline">
+        <div class="node">Investment Platform</div><span class="arrow">→</span>
+        <div class="node">Raw Trades & Positions</div><span class="arrow">→</span>
+        <div class="node">Python Validation</div><span class="arrow">→</span>
+        <div class="node">SQL Store</div><span class="arrow">→</span>
+        <div class="node">AI Analysis</div><span class="arrow">→</span>
+        <div class="node">Human Review</div><span class="arrow">→</span>
+        <div class="node">Risk / Reporting</div>
+      </div>
+    </div>
+
+    <div class="footer">
+      Built as a Technical AI Business Analyst portfolio demonstration using synthetic data only.
+    </div>
+  </main>
+</div>
+
+<script>
+function runAnalysis(){
+  document.getElementById('summary').innerText =
+    'Analysis complete: 33 exceptions detected across 1,250 records. Highest-risk issues are stale pricing and missing classifications. Human review recommended before downstream reporting.';
+  document.getElementById('status').innerText = 'Analysis completed successfully.';
+}
+function statusMsg(msg){ document.getElementById('status').innerText = msg; }
+</script>
+</body>
+</html>
