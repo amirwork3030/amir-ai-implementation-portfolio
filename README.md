@@ -14,9 +14,16 @@ Invoice/document triage workflow with validation, confidence scoring, duplicate 
 
 **BA / implementation evidence:** AS-IS/TO-BE process analysis, document/data requirements, exception rules, confidence thresholds, human-in-the-loop, UAT thinking and Python workflow prototyping.
 
+### 3. Investment Data Control Centre
+A visual investment-data quality and AI-assisted exception-management prototype using synthetic data. It demonstrates data-flow thinking from an investment platform through validation, SQL storage, AI analysis, human review and downstream risk/reporting.
+
+**BA / implementation evidence:** investment-data mapping, data-quality exceptions, AI-assisted analysis, human-in-the-loop controls, implementation-readiness thinking and Jira-style workflow actions.
+
+[View the Investment Data Control Centre project](investment_data_control_centre/)
+
 ## Supporting sample
 
-### 3. Controlled Natural-Language BI Assistant
+### 4. Controlled Natural-Language BI Assistant
 Natural-language business questions are mapped to a controlled intent catalogue and safe SQL query plan. Unsupported requests trigger clarification rather than unrestricted SQL generation.
 
 **BA / implementation evidence:** data semantics, requirements, supported intents, structured outputs, controls, SQL, transparency and auditability.
