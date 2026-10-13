@@ -13,13 +13,64 @@ st.write("Three working portfolio modules demonstrate discovery, structured AI r
 st.info("Synthetic portfolio demonstration. Human approval records acceptance of a recommendation for review; it does not approve finance, execute transformation or accept an engagement.")
 with st.sidebar:
     st.header("Workspace")
-    module = st.selectbox("Module", list(MODULES))
+    module = st.selectbox("Module", list(MODULES), key="selected_module")
     live_enabled = os.getenv("PORTFOLIO_ENABLE_PRIVATE_LIVE", "").lower() == "true"
     modes = ["Sample-data demonstration"] + (["Live OpenAI"] if live_enabled else [])
     mode = st.radio("Recommendation mode", modes)
     st.caption("Demo mode makes no external API calls. Live mode sends the input to OpenAI; use synthetic data only.")
     model = st.text_input("OpenAI model", "gpt-4o-mini") if mode == "Live OpenAI" else "gpt-4o-mini"
     st.caption("Public deployment is free demo only. Live integration is disabled unless explicitly enabled in a private, access-controlled deployment.")
+
+# Recruiter-facing portfolio homepage; module selection and review controls remain below.
+st.markdown("""
+<style>
+.hero-banner {background:linear-gradient(125deg,#11243c,#214e77);border-radius:18px;
+ padding:30px 34px;color:white;margin:8px 0 25px;}
+.hero-banner h2 {color:white!important;font-size:2rem;line-height:1.2;margin:0 0 12px;}
+.hero-banner p {color:#dce9f5;font-size:1.05rem;max-width:760px;margin:0;}
+.section-kicker {font-weight:700;letter-spacing:.13em;color:#3976a9;font-size:.8rem;}
+.project-card {min-height:220px;background:white;border:1px solid #dbe4ee;border-radius:14px;
+padding:20px;box-shadow:0 4px 16px rgba(18,39,64,.035);}
+.project-card h3 {font-size:1.2rem;margin:10px 0;color:#132843;}
+.project-card p {color:#4b5d70;font-size:.91rem;line-height:1.55;}
+.project-tag {color:#276193;font-weight:700;font-size:.73rem;letter-spacing:.06em;}
+</style>
+<div class="hero-banner">
+<div class="section-kicker" style="color:#a8d8ff">AI IMPLEMENTATION · BUSINESS ANALYSIS · DIGITAL TRANSFORMATION</div>
+<h2>Turning complex business problems into practical AI solutions.</h2>
+<p>Explore three interactive demonstrations covering financial services, operational transformation
+and professional services. Each illustrates structured recommendations, human oversight and traceable decisions.</p>
+</div>
+""", unsafe_allow_html=True)
+st.markdown('<p class="section-kicker">SELECTED PROJECTS</p>', unsafe_allow_html=True)
+st.subheader("Explore the portfolio")
+projects = [
+    ("Insurance premium finance", "FINANCIAL SERVICES · AI CASE TRIAGE",
+     "Insurance Premium Finance", "Analyse an insurance finance case, flag affordability, arrears and vulnerability controls, and route recommendations for human review.",
+     "Case triage · Finance controls · Audit"),
+    ("Process discovery & transformation", "OPERATIONS · PROCESS IMPROVEMENT",
+     "AI Process Transformation", "Investigate current workflows, quantify baseline workload and propose practical future-state process improvements.",
+     "AS-IS / TO-BE · Requirements · Value"),
+    ("Professional services intake", "PROFESSIONAL SERVICES · WORK INTAKE",
+     "Professional Services Intake", "Assess incoming requests, surface conflict-check requirements and recommend a review route for client-facing work.",
+     "Intake · Routing · Human oversight"),
+]
+columns = st.columns(3, gap="medium")
+for col, (name, label, heading, description, tags) in zip(columns, projects):
+    with col:
+        st.markdown(
+            f'<div class="project-card"><div class="project-tag">{label}</div>'
+            f'<h3>{heading}</h3><p>{description}</p>'
+            f'<p><strong>{tags}</strong></p></div>',
+            unsafe_allow_html=True,
+        )
+        st.button("Explore this project →", key=f"explore:{name}",
+                  use_container_width=True,
+                  on_click=lambda value=name: st.session_state.update(selected_module=value))
+st.caption("Public portfolio uses synthetic examples and pre-defined demonstration recommendations. Live LLM calls are disabled.")
+st.divider()
+st.subheader("Interactive project workspace")
+st.write(f"**Selected demonstration:** {module}. Use the workspace below to generate, edit and approve a structured recommendation.")
 
 left, right = st.columns([1, 1.15], gap="large")
 with left:
