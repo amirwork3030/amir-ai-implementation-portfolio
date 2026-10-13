@@ -6,7 +6,7 @@ import streamlit as st
 from core import MODULES, Recommendation, approve, controls, recommend, validate_input
 
 st.set_page_config(page_title="Amir Iqbal | AI Business Analyst", page_icon="◈", layout="wide")
-st.markdown("""<style>.stApp {background:#f5f7fb} h1,h2,h3 {color:#14243b} div[data-testid="stMetric"] {background:white;padding:18px;border-radius:12px;border:1px solid #dde4ef} .block-container {padding-top:2rem}</style>""", unsafe_allow_html=True)
+st.markdown("""<style>.stApp {background:#f5f7fb} h1,h2,h3 {color:#14243b} div[data-testid="stMetric"] {background:white;padding:18px;border-radius:12px;border:1px solid #dde4ef} .block-container {padding-top:6rem!important}</style>""", unsafe_allow_html=True)
 st.caption("AMIR IQBAL · TECHNICAL AI BUSINESS ANALYST")
 st.title("From business challenge to controlled action")
 st.write("Three working portfolio modules demonstrate discovery, structured AI recommendations, human oversight and auditability.")
